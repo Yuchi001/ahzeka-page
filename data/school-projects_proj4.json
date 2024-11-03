@@ -1,0 +1,10 @@
+{
+  "title": "Nazwij jak chcesz",
+  "id": "proj4",
+  "short_description": "another short desc",
+  "description": "wewewewe",
+  "links": {
+    "github": "https://github.com",
+    "itch.io": "https://itch.io/"
+  }
+}

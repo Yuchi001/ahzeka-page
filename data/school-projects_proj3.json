@@ -1,0 +1,10 @@
+{
+  "title": "Proj 3",
+  "id": "proj3",
+  "short_description": "short desc",
+  "description": "mimimimi",
+  "links": {
+    "github": "https://github.com",
+    "itch.io": "https://itch.io/"
+  }
+}

@@ -4,7 +4,7 @@ import './index.css';
 import {ThemeProvider} from "@mui/material";
 import {RouterProvider} from "react-router-dom";
 import router from "./utils/router/router";
-import theme from "./utils/theme/theme";
+import {theme} from "./utils/theme/theme";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
