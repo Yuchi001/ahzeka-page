@@ -4,6 +4,7 @@ import {ErrorPage} from "../../error-page/ErrorPage";
 import {MainView} from "../../main-view/MainView";
 import {ElementsListGeneric} from "../../elements-list-generic/ElementsListGeneric";
 import {Details} from "../../details/Details";
+import {Stack} from "@mui/material";
 
 const router = createBrowserRouter([
     {
