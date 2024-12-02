@@ -5,10 +5,9 @@
   "description": "mimimimi",
   "links": {
     "github": "https://github.com",
-    "itch.io": "https://itch.io/",
+    "itchio": "https://itch.io/",
     "other": [
-      "link1",
-      "link2"
+        "https://gdzies"
     ]
   }
 }

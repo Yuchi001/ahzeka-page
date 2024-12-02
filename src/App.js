@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -27,7 +27,8 @@ import {
     School
 } from "@mui/icons-material";
 import {theme_main, theme_paper} from "./utils/theme/theme";
-import general from "./assets/general.json";
+import {BreadCrumb} from "./bread-crumb/BreadCrumb";
+import './App.css';
 
 const drawerWidth = 300;
 
@@ -43,6 +44,24 @@ function App() {
     const [showCopySnackBar, setShowCopySnackBar] = useState(false);
     const navigate = useNavigate();
     const [params] = useSearchParams();
+    const [general, setGeneral] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/general');
+                if (!response.ok) {
+                    throw new Error('Błąd podczas pobierania danych');
+                }
+                const data = await response.json();
+                setGeneral(data);
+            } catch (error) {
+                console.error('Wystąpił błąd:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -68,6 +87,7 @@ function App() {
         return params.get('view') ? locName.substring(locName.indexOf('/') + 1, locName.lastIndexOf('/')) : locName.substring(1);
     }
 
+    if (general === null) return;
 
     return (
        <div>
@@ -86,15 +106,9 @@ function App() {
                    </Stack>
                    <Stack height="30%" alignItems="center" justifyContent="center" paddingX="10px"  sx={{ boxShadow: 'none', background: theme_main }}>
                        <Breadcrumbs sx={{ color: 'white' }}>
-                           <Link style={{ pointerEvents: locationIs('/') ? 'none' : 'all' }} underline="hover" color="inherit" href="/">
-                               home
-                           </Link>
-                           {!locationIs('/') && <Link style={{ pointerEvents: params.get("view") ? 'all' : 'none' }} underline="hover" color="inherit" href={`/${tabPath()}`}>
-                               {tabPath()}
-                           </Link>}
-                           {params.get("view") && <Typography color="inherit" href="/">
-                               {params.get("view")}
-                           </Typography>}
+                           <BreadCrumb value="home" pointerEvents={!locationIs('/')} />
+                           {!locationIs('/') && <BreadCrumb value={tabPath()} pointerEvents={true} link={`/${tabPath()}`} />}
+                           {params.get("view") && <BreadCrumb value={params.get("view")} />}
                        </Breadcrumbs>
                    </Stack>
                </Stack>
