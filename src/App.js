@@ -49,7 +49,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/general');
+                const response = await fetch('http://51.68.175.56:5000/api/general');
                 if (!response.ok) {
                     throw new Error('Błąd podczas pobierania danych');
                 }

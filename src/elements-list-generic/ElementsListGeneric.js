@@ -11,7 +11,7 @@ export const ElementsListGeneric = ({tabName}) => {
 
         const fetchProjects = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/data/${tabName}`);
+                const response = await fetch(`http://51.68.175.56:5000/api/data/${tabName}`);
 
                 if (!response.ok) {
                     console.log("Fetching files failed");

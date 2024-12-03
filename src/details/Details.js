@@ -24,7 +24,7 @@ export const Details = () => {
 
         const fetchDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/project/${tabPath()}/${params.get('view')}`);
+                const response = await fetch(`http://51.68.175.56:5000/api/project/${tabPath()}/${params.get('view')}`);
 
                 if (!response.ok) {
                     console.log("Fetching files failed");
